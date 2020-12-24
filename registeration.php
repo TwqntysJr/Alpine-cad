@@ -8,8 +8,7 @@
         (at your option) any later version.
         This program comes with ABSOLUTELY NO WARRANTY; Use at your own risk.
 
-        // ID - EMAIL - USERNAME - PASSWORD - ROLE - BANNED
-        -->
+-->
 <?php
     require('includes/db.php');
     // When form submitted, insert values into the database.

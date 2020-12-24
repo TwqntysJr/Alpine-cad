@@ -8,8 +8,7 @@
         (at your option) any later version.
         This program comes with ABSOLUTELY NO WARRANTY; Use at your own risk.
 
-        // ID - EMAIL - USERNAME - PASSWORD - ROLE - BANNED
-        -->
+-->
 <?php
     require('includes/db.php');
     session_start();
@@ -45,7 +44,7 @@
             <title>ALPINERP CAD - Login</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-                
+
         <!--===============================================================================================-->	
             <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
         <!--===============================================================================================-->
