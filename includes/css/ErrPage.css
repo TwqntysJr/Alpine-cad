@@ -38,10 +38,3 @@ body {
   -webkit-transform: scale(.989);
   background: #f4f4f4;
 }
-
-a {
-  position:fixed;
-  bottom: 10px;
-  right:10px;
-  color: #ddd;
-}
