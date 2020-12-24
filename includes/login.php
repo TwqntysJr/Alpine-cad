@@ -18,10 +18,10 @@
             // Redirect to user dashboard page
             header("Location: dashboard.php");
         } else {
-            echo "<div class='form'>
-                  <h3>Incorrect Username/password.</h3><br/>
-                  <p class='link'>Click here to <a href='login.php'>Login</a> again.</p>
-                  </div>";
+            echo '<script>';
+            echo 'console.log("We shouldnt be here")';
+            echo '</script>';
+            header("ErrorPages/IncorrectPassword.html");
         }
     } else {
 ?>
