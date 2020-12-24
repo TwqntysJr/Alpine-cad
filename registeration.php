@@ -27,15 +27,9 @@
         $result   = mysqli_query($con, $query);
                     
         if ($result) {
-            echo "<div class='form'>
-                <h3>You are registered successfully.</h3><br/>
-                <p class='link'>Click here to <a href='index.php'>Login</a></p>
-                </div>";
+            header("Location: index.php");
         } else {
-            echo "<div class='form'>
-                <h3>Required fields are missing.</h3><br/>
-                <p class='link'>Click here to <a href='registration.php'>registration</a> again.</p>
-                </div>";
+            header("Location: Pages/logregSystem/IncorrectPassword.html");
         }
     } else {
 ?>
@@ -90,7 +84,7 @@
                                 <input class="input100" type="text" name="email" placeholder="Email">
                                 
                             </div>
-                            <div class="wrap-input200 rs3 rs4 validate-input" data-validate = "Password is required">
+                            <div class="wrap-input200 validate-input" data-validate = "Password is required">
                                 <input class="input100" type="password" name="password" placeholder="Password">
                                 
                             </div>
@@ -101,7 +95,9 @@
                             
                                 <input type="submit" value="Register" name="submit" class="login100-form-btn"/>
                             </div>
-                            
+                            <div class="container-login100-form-btn">
+                                <a href="index.php">Already have an account? Log in.</a>
+                            </div>
                         </form>
                     </div>
                 </div>
