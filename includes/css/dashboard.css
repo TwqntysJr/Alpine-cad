@@ -6,3 +6,29 @@
     text-align: center;
     color: #fff;
 }
+
+.dashboard-body{
+    height: 98vh;
+}
+
+.announcements{
+    background-color: rgba(100, 50, 166, 0.5);
+    height: 500px;
+    width: 800px;
+    margin-left: 650px;
+    margin-top: 250px;
+    position: absolute;
+    border-radius: 5%;
+}
+
+.anouncements-header{
+    margin-left: 20px;
+    height: 80px;
+    width: 400px;
+    border-bottom-right-radius: 12px;
+    position: absolute;
+}
+
+.white {
+    color: white;
+}
