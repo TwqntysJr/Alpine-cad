@@ -1,10 +1,30 @@
+
 <?php
+    require('inc/db.php');
     session_start();
-    
-    if(isset($_SESSION["username"])) {
-        header("Location: /dashboard.php");
-        exit();
-    }else{
+    // When form submitted, check and create user session.
+    if (isset($_POST['username'])) {
+        $username = stripslashes($_REQUEST['username']);    // removes backslashes
+        $username = mysqli_real_escape_string($con, $username);
+        $password = stripslashes($_REQUEST['password']);
+        $password = mysqli_real_escape_string($con, $password);
+        // Check user is exist in the database
+        $query    = "SELECT * FROM `users` WHERE username='$username'
+                     AND password='" . md5($password) . "'";
+        $result = mysqli_query($con, $query) or die(mysql_error());
+        $rows = mysqli_num_rows($result);
+        if ($rows == 1) {
+            $_SESSION['username'] = $username;
+            // Redirect to user dashboard page
+            header("Location: dashboard.php");
+        } else {
+            echo "<div class='form'>
+                  <h3>Incorrect Username/password.</h3><br/>
+                  <p class='link'>Click here to <a href='login.php'>Login</a> again.</p>
+                  </div>";
+        }
+    } else {
+?>
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -23,6 +43,7 @@
         (at your option) any later version.
         This program comes with ABSOLUTELY NO WARRANTY; Use at your own risk.
 
+        // ID - EMAIL - USERNAME - PASSWORD - ROLE - BANNED
         -->
         <!--===============================================================================================-->	
             <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -52,7 +73,7 @@
             <div class="limiter">
                 <div class="container-login100">
                     <div class="wrap-login100 p-b-160 p-t-50">
-                        <form class="login100-form validate-form">
+                        <form class="login100-form validate-form" method="post" name="login">
                             <span class="login100-form-title p-b-43">
                                 Account Login
                             </span>
@@ -69,9 +90,8 @@
                             </div>
 
                             <div class="container-login100-form-btn">
-                                <button class="login100-form-btn">
-                                    Sign in
-                                </button>
+                            
+                                <input type="submit" value="Login" name="submit" class="login100-form-btn"/>
                             </div>
                         </form>
                     </div>
