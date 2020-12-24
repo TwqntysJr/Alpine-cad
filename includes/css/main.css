@@ -222,6 +222,22 @@ iframe {
   background-color: #fff;
 }
 
+.wrap-input200 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  width: 100%;
+  height: 75px;
+  position: relative;
+  border: 1px solid #e0e0e0;
+  border-bottom: none;
+  background-color: #fff;
+}
+
 .wrap-input100.rs1 {
   border-top-left-radius: 12px;
   border-right: none;
@@ -229,6 +245,13 @@ iframe {
 
 .wrap-input100.rs2 {
   border-top-right-radius: 12px;
+}
+
+.wrap-input200.rs3 {
+  border-bottom-left-radius: 12px;
+}
+.wrap-input200.rs4 {
+  border-bottom-right-radius: 12px;
 }
 
 .label-input100 {
@@ -359,7 +382,7 @@ input.input100 {
 }
 
 .login100-form-btn:hover {
-  background-color: transparent;
+  background-color: #292826;
 }
 .login100-form-btn:hover:before {
   opacity: 1;
