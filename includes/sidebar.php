@@ -1,9 +1,14 @@
+<?php
+    include('db.php');
+?>
 <head>
     <link rel="stylesheet" href="includes/css/sidebar.css">
+    <link rel="stylesheet" href="includes/css/dashboard.css">
 </head>
 <main class="main">
   <aside class="sidebar">
   <label class="logo-name">Alpine RP</label>
+  
     <nav class="nav">
       <ul>
         <li><a href="#">Discord</a></li>

@@ -68,3 +68,11 @@
 	margin-top: 20px;
 	color: rgba(255, 255, 255, 0.35);
 }
+
+.Username{
+	color: white;
+	font-size: 30px;
+	position: absolute;
+	margin-left: 55px;
+	margin-top: 50px;
+}
