@@ -79,14 +79,13 @@
                             </span>
                             
                             <div class="wrap-input100 rs1 validate-input" data-validate = "Username is required">
-                                <input class="input100" type="text" name="username">
-                                <span class="label-input100">Username</span>
+                                <input class="input100" type="text" name="username" placeholder="Username">
                             </div>
                             
                             
                             <div class="wrap-input100 rs2 validate-input" data-validate="Password is required">
-                                <input class="input100" type="password" name="password">
-                                <span class="label-input100">Password</span>
+                                <input class="input100" type="password" name="password" placeholder="Password">
+                                
                             </div>
 
                             <div class="container-login100-form-btn">
