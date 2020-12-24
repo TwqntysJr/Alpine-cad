@@ -1,6 +1,6 @@
 
 <?php
-    require('inc/db.php');
+    require('includes/db.php');
     session_start();
     // When form submitted, check and create user session.
     if (isset($_POST['username'])) {
@@ -25,7 +25,7 @@
         }
     } else {
 ?>
-        ?>
+    
         <!DOCTYPE html>
         <html lang="en">
         <head>
