@@ -28,12 +28,7 @@
             // Redirect to user dashboard page
             header("Location: dashboard.php");
         } else {
-            header("Location: ErrorPages/IncorrectPassword.html");
-            echo '<script>';
-            echo 'console.log("We got here")';
-            echo '</script>';
-            
-            
+            header("Location: ErrorPages/IncorrectPassword.html");           
         }
     } else {
 ?>
