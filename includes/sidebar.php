@@ -24,7 +24,7 @@
       <ul>
         <li><a href="#">Discord</a></li>
         <li><a href="#">Civilian Officer</a></li>
-        <li><a href="#">Civilian</a></li>
+        <li><a href="civ.php">Civilian</a></li>
         <?php 
             
             $usname = $_SESSION['username'];

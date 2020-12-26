@@ -9,6 +9,7 @@
 
 .dashboard-body{
     height: 98vh;
+    /**background-color: black;**/
 }
 
 .announcements{
@@ -37,4 +38,19 @@
     position: absolute;
     margin-left: 650px;
     margin-top: 250px;
+}
+
+.select-civ {
+    position: absolute;
+    background-color: black;
+    color: white;
+    height: 150px;
+    width: 400px;
+    margin-left: 300px;
+    margin-top: 200px;
+}
+
+.select-civ-header {
+    margin-left: 20px;
+    font-size: 11px;
 }
