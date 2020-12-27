@@ -14,7 +14,29 @@
             <h1 class="white center"> You have been banned from the cad system</h1>
         ');
     }else{
-    include('includes/sidebar.php');
+
+
+    
+    if (isset($_REQUEST['FirstName'])) {
+        // removes backslashes
+        $charFirstname = stripslashes($_REQUEST['FirstName']);
+        
+        $charLastname = stripslashes($_REQUEST['LastName']);
+        $charGender = $_REQUEST['gender'];
+        $charAdress = stripslashes($_REQUEST['adress']);
+        $charDOB = date('Y-m-d', strtotime($_REQUEST['DOB']));
+        $charRace = $_REQUEST['race'];
+        $charuuid = hexdec(uniqid());
+        $charquery    = "INSERT into `civilians` (UUID, userid, FirstName, LastName, DOB, Residence, gender, Origen)
+                    VALUES ('$charuuid','$uid', '$charFirstname','$charLastname', '$charDOB', '$charAdress', '$charGender', '$charRace')";
+        $charresult   = mysqli_query($con, $charquery);
+                    
+        if ($charresult) {
+            header("Location: civ.php");
+        } else {
+            header("Location: Pages/logregSystem/IncorrectPassword.html");
+        }
+    } else {
 ?>
 
 <div class="dashboard-body">
@@ -45,11 +67,11 @@
         <div class="register-civ-header">    
         <h1>Create a civilian character</h1>
         </div>
-        <form action="N/A" method="post">
+        <form method="post">
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <input class="form-cntrl regfirstname" type="text" required="" name="FirstName" placeholder="First Name">
+                        <input class="form-cntrl" type="text" required="" name="FirstName" placeholder="First Name">
                     </div>
                 </div>
                 <div class="col">
@@ -61,61 +83,56 @@
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <input class="form-cntrl regfirstname" type="text" required="" name="FirstName" placeholder="First Name">
+                        <select class="form-cntrl full-width" name="gender" required="">
+                            <option selected="true">Select Gender</option>
+                            <?php 
+                                $selectgenders_sql = "SELECT * FROM genders";
+                                $genders_result = mysqli_query($con, $selectgenders_sql) or die(mysql_error());
+                                while($gender_rows = mysqli_fetch_array($genders_result)){
+                                    echo"
+                                        <option>" . $gender_rows['Name']; "</option>
+                                    ";
+                                }
+                            ?>
+                        </select>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <input class="form-cntrl reglastname" type="text" required="" name="LastName" placeholder="Last Name">                        
+                    <select class="form-cntrl reglastname full-width" name="race" required="">
+                            <option selected="true">Select Race</option>
+                                <?php 
+                                    $selectgenders_sql = "SELECT * FROM race";
+                                    $genders_result = mysqli_query($con, $selectgenders_sql) or die(mysql_error());
+                                    while($gender_rows = mysqli_fetch_array($genders_result)){
+                                        echo"
+                                            <option>" . $gender_rows['name']; "</option>
+                                        ";
+                                    }
+                                ?>
+                        </select>                        
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <div class="form-group">
-                        <input class="form-cntrl regfirstname" type="text" required="" name="FirstName" placeholder="First Name">
+                        <input class="form-cntrl " type="text" required="" name="adress" placeholder="Adress (may be made up)">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
-                        <input class="form-cntrl reglastname" type="text" required="" name="LastName" placeholder="Last Name">                        
+                         <input class="form-cntrl reglastname" type="date" id="DOB" name="Date Of Birth">                      
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <input class="form-cntrl regfirstname" type="text" required="" name="FirstName" placeholder="First Name">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <input class="form-cntrl reglastname" type="text" required="" name="LastName" placeholder="Last Name">                        
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <input class="form-cntrl regfirstname" type="text" required="" name="FirstName" placeholder="First Name">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
-                        <input class="form-cntrl reglastname" type="text" required="" name="LastName" placeholder="Last Name">                        
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="form-group">
-                        <input type="submit" value="Create Civilian" name="create" class="btn btn-primary btn-block"/>
-                    </div>
-                </div>
+            <div class="form-group">
+                <input type="submit" value="Create Account" name="create" class="btn btn-primary btn-block btn-full-width"/>
             </div>
         </form>
     </div>
 </div>
 <?php
+    }
 }
 ?>

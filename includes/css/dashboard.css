@@ -59,7 +59,7 @@
     position: absolute;
     background-color: #312450;
     color: white;
-    height: 500px;
+    height: 300px;
     width: 600px;
     margin-left: 900px;
     margin-top: 200px;
@@ -87,7 +87,6 @@
 }
 
 .form-cntrl {
-    
     display: block;
     width: 100%;
     height: calc(1.5em + .94rem + 2px);
@@ -98,7 +97,7 @@
     color: #9ca8b3;
     background-color: #5E42A6;
     background-clip: padding-box;
-    border: 1px solid #312450;
+    border: 1px solid #363e54;
     border-radius: .25rem;
     -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
@@ -155,4 +154,24 @@
     color: #fff;
     background-color: #4452cc;
     border-color: #3a49c9;
+}
+select {
+    text-transform: none;
+}
+
+select {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 100%;
+}
+
+.btn-full-width {
+    width: 95%;
+    margin-left: 12px;
+}
+
+.full-width {
+    width: 100%;
 }
