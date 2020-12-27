@@ -54,3 +54,105 @@
     margin-left: 20px;
     font-size: 11px;
 }
+
+.register-civ {
+    position: absolute;
+    background-color: #312450;
+    color: white;
+    height: 500px;
+    width: 600px;
+    margin-left: 900px;
+    margin-top: 200px;
+    border-radius: 15px;
+}
+
+.register-civ-header {
+    text-align: center;
+    font-size: 11px;
+}
+
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+}
+.col {
+
+    position: relative;
+    width: 240px;
+    margin-left: 15px;
+}
+
+.form-cntrl {
+    
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .94rem + 2px);
+    padding: .47rem .75rem;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #9ca8b3;
+    background-color: #5E42A6;
+    background-clip: padding-box;
+    border: 1px solid #312450;
+    border-radius: .25rem;
+    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.reglastname {
+    margin-left: 40px;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    color: #e9ecef;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    padding: .47rem .75rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    -webkit-transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+
+.btn-primary{
+    color: #fff;
+    background-color: #5E42A6;
+    border-color: #3a49c9;
+}
+.btn-primary:hover{
+    color: #fff;
+    background-color: #4452cc;
+    border-color: #3a49c9;
+}

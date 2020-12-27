@@ -1,11 +1,13 @@
 <?php 
     include('includes/header.php');
     include('includes/sidebar.php');
+    include('includes/db.php');
     $usname = $_SESSION['username'];
     $sql = "SELECT * FROM users WHERE username='$usname'";
     $result = mysqli_query($con, $sql) or die(mysql_error());
     while($rows = mysqli_fetch_array($result)){
         $banned = $rows['BANNED'];
+        $uid = $rows['ID'];
     }
     if($banned == "1"){
         echo('
@@ -14,9 +16,7 @@
     }else{
     include('includes/sidebar.php');
 ?>
-<head>
-<link rel="stylesheet" href="bootstrap-dark.css">
-</head>
+
 <div class="dashboard-body">
     <div class="welcome-msg">
         <h1> Welcome
@@ -28,8 +28,92 @@
     </div>
     <div class="select-civ">
         <div class="select-civ-header">
-            <h1>My Characters (x/1000) </h1>
+        
+            <h1>My Characters (x/1000) 
+            <?php
+                $result = mysqli_query($con, $sql) or die(mysql_error());
+                while($rows = mysqli_fetch_assoc($result)){
+                    $uid = $rows['ID'];
+                    echo "UID= " .$uid;
+                }
+                
+            ?></h1>
         </div>
+    </div>
+
+    <div class="register-civ">
+        <div class="register-civ-header">    
+        <h1>Create a civilian character</h1>
+        </div>
+        <form action="N/A" method="post">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <input class="form-cntrl regfirstname" type="text" required="" name="FirstName" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input class="form-cntrl reglastname" type="text" required="" name="LastName" placeholder="Last Name">                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <input class="form-cntrl regfirstname" type="text" required="" name="FirstName" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input class="form-cntrl reglastname" type="text" required="" name="LastName" placeholder="Last Name">                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <input class="form-cntrl regfirstname" type="text" required="" name="FirstName" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input class="form-cntrl reglastname" type="text" required="" name="LastName" placeholder="Last Name">                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <input class="form-cntrl regfirstname" type="text" required="" name="FirstName" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input class="form-cntrl reglastname" type="text" required="" name="LastName" placeholder="Last Name">                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <input class="form-cntrl regfirstname" type="text" required="" name="FirstName" placeholder="First Name">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <input class="form-cntrl reglastname" type="text" required="" name="LastName" placeholder="Last Name">                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <input type="submit" value="Create Civilian" name="create" class="btn btn-primary btn-block"/>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <?php
