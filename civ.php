@@ -14,9 +14,6 @@
             <h1 class="white center"> You have been banned from the cad system</h1>
         ');
     }else{
-
-
-    
     if (isset($_REQUEST['FirstName'])) {
         // removes backslashes
         $charFirstname = stripslashes($_REQUEST['FirstName']);
@@ -50,7 +47,6 @@
     </div>
     <div class="select-civ">
         <div class="select-civ-header">
-        
             <h1>My Characters (x/1000) 
             <?php
                 $result = mysqli_query($con, $sql) or die(mysql_error());
@@ -58,11 +54,9 @@
                     $uid = $rows['ID'];
                     echo "UID= " .$uid;
                 }
-                
             ?></h1>
         </div>
     </div>
-
     <div class="register-civ">
         <div class="register-civ-header">    
         <h1>Create a civilian character</h1>
