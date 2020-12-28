@@ -21,7 +21,7 @@
         $email    = mysqli_real_escape_string($con, $email);
         $password = stripslashes($_REQUEST['password']);
         $password = mysqli_real_escape_string($con, $password);
-        $uid = hexdec(uniqid());
+        $uid = rand(1,999999999);
         $query    = "INSERT into `users` (ID, EMAIL, USERNAME, PASSWORD)
                     VALUES ('$uid','$email', '$username','" . md5($password) . "')";
         $result   = mysqli_query($con, $query);
