@@ -42,7 +42,8 @@
 
 .select-civ {
     position: absolute;
-    background-color: black;
+    background-color: #312450;
+    border-radius: 15px;
     color: white;
     height: 150px;
     width: 400px;
@@ -174,4 +175,8 @@ select {
 
 .full-width {
     width: 100%;
+}
+
+.down {
+    margin-top: 1rem;
 }

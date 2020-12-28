@@ -4,6 +4,8 @@
     include('includes/db.php');
     $usname = $_SESSION['username'];
     $sql = "SELECT * FROM users WHERE username='$usname'";
+    $charuuid1 = rand(1,99999999999999);
+
     $result = mysqli_query($con, $sql) or die(mysql_error());
     while($rows = mysqli_fetch_array($result)){
         $banned = $rows['BANNED'];
@@ -23,9 +25,9 @@
         $charAdress = stripslashes($_REQUEST['adress']);
         $charDOB = date('Y-m-d', strtotime($_REQUEST['DOB']));
         $charRace = $_REQUEST['race'];
-        $charuuid = hexdec(uniqid());
+        
         $charquery    = "INSERT into `civilians` (UUID, userid, FirstName, LastName, DOB, Residence, gender, Origen)
-                    VALUES ('$charuuid','$uid', '$charFirstname','$charLastname', '$charDOB', '$charAdress', '$charGender', '$charRace')";
+                    VALUES ('$charuuid1', '$uid', '$charFirstname','$charLastname', '$charDOB', '$charAdress', '$charGender', '$charRace')";
         $charresult   = mysqli_query($con, $charquery);
                     
         if ($charresult) {
@@ -48,13 +50,31 @@
     <div class="select-civ">
         <div class="select-civ-header">
             <h1>My Characters (x/1000) 
-            <?php
-                $result = mysqli_query($con, $sql) or die(mysql_error());
-                while($rows = mysqli_fetch_assoc($result)){
-                    $uid = $rows['ID'];
-                    echo "UID= " .$uid;
-                }
-            ?></h1>
+                <?php 
+                    echo $uid;
+                    echo '<br>';
+                    echo $charuuid1;
+                    echo '<br>';
+
+                ?>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <select class="form-cntrl full-width down" name="civ" required="">
+                            <option selected="true">Select Civilian</option>
+                                <?php 
+                                    $selectchar_sql = "SELECT * FROM civilians WHERE userid='$uid'";
+                                    $selectchar_result = mysqli_query($con, $selectchar_sql) or die(mysql_error());
+                                    while($selectchar_rows = mysqli_fetch_array($selectchar_result)){
+                                        echo"
+                                            <option>" . $selectchar_rows['FirstName'] . " " .  $selectchar_rows['LastName']; "</option>
+                                        ";
+                                    }
+                                ?>
+                            </select>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="register-civ">
