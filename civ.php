@@ -6,6 +6,7 @@
     $sql = "SELECT * FROM users WHERE username='$usname'";
     $charuuid1 = rand(1,99999999999999);
 
+    $randid1 = rand(1, 999999999);
     $result = mysqli_query($con, $sql) or die(mysql_error());
     while($rows = mysqli_fetch_array($result)){
         $banned = $rows['BANNED'];
@@ -23,11 +24,11 @@
         $charLastname = stripslashes($_REQUEST['LastName']);
         $charGender = $_REQUEST['gender'];
         $charAdress = stripslashes($_REQUEST['adress']);
-        $charDOB = date('Y-m-d', strtotime($_REQUEST['DOB']));
+        $charDOB = date('DD-MM-YYYY', strtotime($_REQUEST['DOB']));
         $charRace = $_REQUEST['race'];
         
         $charquery    = "INSERT into `civilians` (UUID, userid, FirstName, LastName, DOB, Residence, gender, Origen)
-                    VALUES ('$charuuid1', '$uid', '$charFirstname','$charLastname', '$charDOB', '$charAdress', '$charGender', '$charRace')";
+                    VALUES ('$randid1', '$uid', '$charFirstname','$charLastname', '$charDOB', '$charAdress', '$charGender', '$charRace')";
         $charresult   = mysqli_query($con, $charquery);
                     
         if ($charresult) {
@@ -52,9 +53,10 @@
             <h1>My Characters (x/1000) 
                 <?php 
                     echo $uid;
+                    echo '<br>   test  ';
+                    echo $randid1;
                     echo '<br>';
-                    echo $charuuid1;
-                    echo '<br>';
+                    echo $uid;
 
                 ?>
             <div class="row">
