@@ -184,3 +184,68 @@ select {
 .down-10 {
     margin-top: 10px;
 }
+
+.longheader {
+    position: absolute;
+    background-color: #312450;
+    color: white;
+    height: 140px;
+    width: 1500px;
+    margin-left: 300px;
+    margin-top: 50px;
+    border-radius: 15px;   
+}
+
+.left-10 {
+    margin-left: 10px;
+}
+
+
+div.tab-button-wrapper ul {
+	padding: 5px;
+	list-style: none;
+}
+
+div.tab-button-wrapper li {
+	float: left;
+}
+
+a.tab-button-first {
+	border-radius: 15px 0 0 0;
+	-webkit-border-radius: 15px 0 0 0;
+	-moz-border-radius: 15px 0 0 0;
+}
+
+a.tab-button-last {
+	border-radius: 0 15px 0 0;
+	-webkit-border-radius: 0 15px 0 0;
+	-moz-border-radius: 0 15px 0 0;
+	border-right: none;
+}
+
+div.tab-button-wrapper a {
+	display: block;
+	padding: 1em;
+	text-decoration: none;
+	color: #252525;
+	background-color: #FFFFFF;
+	border-right: 1px solid black;
+}
+
+a.tab-button-hidden {
+	opacity: 0.5;
+}
+
+div.tab-body {
+	padding: 1em;
+	clear: both;
+	background-color: #312450;
+	min-height: 85%;
+	border-radius: 0 15px 15px 15px;
+	-webkit-border-radius: 0 15px 15px 15px;
+	-moz-border-radius: 0 15px 15px 15px;
+}
+
+div.tab-body-hidden {
+	display: none;
+}
