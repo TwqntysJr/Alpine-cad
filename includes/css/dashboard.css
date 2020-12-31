@@ -180,3 +180,7 @@ select {
 .down {
     margin-top: 1rem;
 }
+
+.down-10 {
+    margin-top: 10px;
+}
