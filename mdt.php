@@ -52,7 +52,13 @@
                     <p>Gender: <?php echo $civGender?></p>
                     <p>Origen: <?php echo $civOrigen?></p>
                 </div>
-                <div class="tab-body tab-body-hidden" id="tab2"><p>Body 2</p></div>
+                <div class="tab-body tab-body-hidden" id="tab2">
+                    <H2>Setup your license</H2>
+                    <select class="form-cntrl reglastname full-width" name="race" required="">
+                        <option selected="true" value="None">None</option>
+                                
+                    </select>
+                </div>
                 <div class="tab-body tab-body-hidden" id="tab3"><p>Body 3</p></div>
                 <div class="tab-body tab-body-hidden" id="tab4"><p>Body 4</p></div>
             </div>

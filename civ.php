@@ -32,7 +32,8 @@
         $charLastname = stripslashes($_REQUEST['LastName']);
         $charGender = $_REQUEST['gender'];
         $charAdress = stripslashes($_REQUEST['adress']);
-        $charDOB = date('DD-MM-YYYY', strtotime($_REQUEST['DOB']));
+        $charorgDOB = $_REQUEST['DOB'];
+        $charDOB = date("Y-m-d", strtotime($charorgDOB));
         $charRace = $_REQUEST['race'];
         
         $charquery    = "INSERT into `civilians` (UUID, userid, FirstName, LastName, DOB, Residence, gender, Origen)
@@ -70,7 +71,7 @@
                                         $selectchar_result = mysqli_query($con, $selectchar_sql) or die(mysql_error());
                                         while($selectchar_rows = mysqli_fetch_array($selectchar_result)){
                                             echo"
-                                                <option id='civid' name='selectedciv' onchange='' value=" .$selectchar_rows['UUID'] . ">" . $selectchar_rows['FirstName'] . " " . $selectchar_rows['LastName'] . "</option>
+                                                <option id='civid' name='selectedciv' value=" .$selectchar_rows['UUID'] . ">" . $selectchar_rows['FirstName'] . " " . $selectchar_rows['LastName'] . "</option>
                                             <br>";
                                         }
                                     ?>
