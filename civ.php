@@ -39,6 +39,9 @@
         $charquery    = "INSERT into `civilians` (UUID, userid, FirstName, LastName, DOB, Residence, gender, Origen)
                     VALUES ('$randid1', '$uid', '$charFirstname','$charLastname', '$charDOB', '$charAdress', '$charGender', '$charRace')";
         $charresult   = mysqli_query($con, $charquery);
+
+        $licensequery = "INSERT into `licenses` (CIVID, LicenseType, LicenseStatus, InsuranceStatus) VALUES ('$randid1', 'none', 'LicensestatusNone', 'InsurancestatusNone')";
+        $licenseresult = mysqli_query($con, $licensequery);
                     
         if ($charresult) {
             header("Location: civ.php");

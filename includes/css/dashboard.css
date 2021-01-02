@@ -87,6 +87,20 @@
     margin-left: 15px;
 }
 
+.col3 {
+
+    position: relative;
+    width: 780px;
+    margin-left: 15px;
+}
+
+.col5 {
+
+    position: relative;
+    width: 1300px;
+    margin-left: 15px;
+}
+
 .form-cntrl {
     display: block;
     width: 100%;
@@ -248,4 +262,8 @@ div.tab-body {
 
 div.tab-body-hidden {
 	display: none;
+}
+
+.width-250 {
+    width: 250px;
 }
