@@ -6,6 +6,16 @@
     $id = $_GET['civid'];
     $sqlciv = "SELECT * FROM civilians WHERE UUID='$id'";
     $civresult = mysqli_query($con, $sqlciv) or die(mysql_error());
+
+    $licensequery1 = "SELECT * FROM licenses WHERE CIVID='$id'";
+    $licenseresult1 = mysqli_query($con, $licensequery1) or die(mysql_error());
+
+    while($licenserows = mysqli_fetch_array($licenseresult1)){
+        $licensetype1 = $licenserows['LicenseType'];
+        $licenseStatus1 = $licenserows['LicenseStatus'];
+        $insurancestatus1 = $licenserows['InsuranceStatus'];
+    }
+
     $civUUID;
     while($civrows = mysqli_fetch_array($civresult)){
         $civUUID = $civrows['UUID'];
@@ -18,20 +28,19 @@
     }
 
     if (isset($_REQUEST['licensetype'])) {
-        // removes backslashes
         $licensetype = $_REQUEST['licensetype'];
         
         $licensestatus = $_REQUEST['licenseStatus'];
         
-        $insurancestatus = $_REQUEST['insuranceStatus'];
+        $insurancestatus = $_REQUEST['InsuranceStatus'];
 
-        $licensequery   = "UPDATE `licenses` WHERE CIVID='$civUUID' ( LicenseType, LicenseStatus, InsuranceStatus)
-                    VALUES ( '$licensetype', '$licensestatus','$insurancestatus')";
+        $licensequery   = "UPDATE `licenses` SET LicenseType='$licensetype', LicenseStatus='$licensestatus', InsuranceStatus='$insurancestatus' WHERE CIVID='$id';";
         $licenseresult   = mysqli_query($con, $licensequery);
                     
         if ($licenseresult) {
-            header("Location: mdt.php");
+            header("Location: mdt.php?civid=$id");
         } else {
+            header("Location: Pages/logregSystem/IncorrectPassword.html");
         }
     } else {
 ?>
@@ -70,6 +79,10 @@
                     <p>Residence: <?php echo $civResidence?></p>
                     <p>Gender: <?php echo $civGender?></p>
                     <p>Origen: <?php echo $civOrigen?></p>
+                    <hr>
+                    <p>License type: <?php echo $licensetype1?></p>
+                    <p>License status: <?php echo $licenseStatus1 ?></p>
+                    <p>Insurance status: <?php echo $insurancestatus1?></p>
                 </div>
                 <div class="tab-body tab-body-hidden" id="tab2">
                     <H2>Setup your license</H2>
@@ -80,29 +93,29 @@
                                 <select class="form-cntrl width-250" name="licensetype" required="">
                                     <option selected="true" value="None">None</option>
                                     <!--===============================================================================================-->
-                                    <option value="ClassA">Class A</option>
-                                    <option value="ClassB">Class B</option>
-                                    <option value="ClassC">Class C</option>
+                                    <option value="Class A">Class A</option>
+                                    <option value="Class B">Class B</option>
+                                    <option value="Class C">Class C</option>
                                     <!--===============================================================================================-->
-                                    <option value="ClassM1">Class M1</option>
-                                    <option value="ClassM2">Class M2</option>
+                                    <option value="Class M1">Class M1</option>
+                                    <option value="Class M2">Class M2</option>
                                     <!--===============================================================================================-->
-                                    <option value="CDLClassA">CDL Class A</option>
-                                    <option value="CDLClassB">CDL Class B</option>
-                                    <option value="CDLClassC">CDL Class C</option>
+                                    <option value="CDL Class A">CDL Class A</option>
+                                    <option value="CDL Class B">CDL Class B</option>
+                                    <option value="CDL Class C">CDL Class C</option>
                                     <!--===============================================================================================-->
-                                    <option value="LearnersPermit">Learners Permit</option>
+                                    <option value="Learners Permit">Learners Permit</option>
                                     <!--===============================================================================================-->
-                                    <option value="InstructorsClassA">Instructor Class A Permit</option>
-                                    <option value="InstructorsClassB">Instructor Class B Permit</option>
-                                    <option value="InstructorsClassC">Instructor Class C Permit</option>
+                                    <option value="Instructors Class A">Instructor Class A Permit</option>
+                                    <option value="Instructors Class B">Instructor Class B Permit</option>
+                                    <option value="Instructors Class C">Instructor Class C Permit</option>
                                     <!--===============================================================================================-->
-                                    <option value="InstructorsClassM1">Instructor Class M1 Permit</option>
-                                    <option value="InstructorsClassM2">Instructor Class M2 Permit</option>
+                                    <option value="Instructors Class M1">Instructor Class M1 Permit</option>
+                                    <option value="Instructors Class M2">Instructor Class M2 Permit</option>
                                     <!--===============================================================================================-->
-                                    <option value="InstructorsCDLA">Instructor CDL Class A Permit</option>
-                                    <option value="InstructorsCDLB">Instructor CDL Class B Permit</option>
-                                    <option value="InstructorsCDLC">Instructor CDL Class C Permit</option>
+                                    <option value="Instructors CDL A">Instructor CDL Class A Permit</option>
+                                    <option value="Instructors CDL B">Instructor CDL Class B Permit</option>
+                                    <option value="Instructors CDL C">Instructor CDL Class C Permit</option>
                                     <!--===============================================================================================-->
                                             
                                 </select>
@@ -112,12 +125,12 @@
                                 <div class="col">
                                 <h2>License Status</h2>
                                 <select class="form-cntrl width-250" name="licenseStatus" required="">
-                                    <option selected="true" value="LicensestatusNone">None</option>
+                                    <option selected="true" value="None">None</option>
                                     <!--===============================================================================================-->
-                                    <option value="LicensestatusValid">Valid</option>
-                                    <option value="LicensestatusInvalid">Invalid</option>
-                                    <option value="LicensestatusExpired">Expired</option>
-                                    <option value="LIcensestatusFake">Fake</option>
+                                    <option value="Valid">Valid</option>
+                                    <option value="Invalid">Invalid</option>
+                                    <option value="Expired">Expired</option>
+                                    <option value="Fake">Fake</option>
                                 </select>
                             </div>
                             <div class="col"></div>
@@ -125,12 +138,12 @@
                                 <div class="col">
                                 <h2>Insurance Status</h2>
                                 <select class="form-cntrl width-250" name="InsuranceStatus" required="">
-                                    <option selected="true" value="InsurancestatusNone">None</option>
+                                    <option selected="true" value="None">None</option>
                                     <!--===============================================================================================-->
-                                    <option value="InsurancestatusValid">Valid</option>
-                                    <option value="InsurancestatusInvalid">Invalid</option>
-                                    <option value="InsurancestatusExpired">Expired</option>
-                                    <option value="InsurancestatusFake">Fake</option>
+                                    <option value="Valid">Valid</option>
+                                    <option value="Invalid">Invalid</option>
+                                    <option value="Expired">Expired</option>
+                                    <option value="Fake">Fake</option>
                                 </select>
                                 </div>
                             </div>
