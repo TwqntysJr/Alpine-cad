@@ -117,7 +117,6 @@
                                     <option value="Instructors CDL B">Instructor CDL Class B Permit</option>
                                     <option value="Instructors CDL C">Instructor CDL Class C Permit</option>
                                     <!--===============================================================================================-->
-                                            
                                 </select>
                             </div>
                             <div class="col"></div>
@@ -158,7 +157,12 @@
                         
                     </form>
                 </div>
-                <div class="tab-body tab-body-hidden" id="tab3"><p>Body 3</p></div>
+                <div class="tab-body tab-body-hidden" id="tab3">
+                    <div class="row bg-black">
+                        <input type="submit" value="Register a new vehicle" name="licensesubmit" class="btn btn-primary down-10"/>
+
+                    </div>
+                </div>
                 <div class="tab-body tab-body-hidden" id="tab4"><p>Body 4</p></div>
             </div>
         </div>
