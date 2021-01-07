@@ -27,6 +27,29 @@
         $civOrigen = $civrows['Origen'];
     }
 
+    if (isset($_REQUEST['vehmake'])){
+        $vehmake = $_REQUEST['vehmake'];
+
+        $vehmodel = $_REQUEST['vehmodel'];
+
+        $vehlicense = $_REQUEST['vehplate'];
+
+        $vehColor = $_REQUEST['vehcolor'];
+
+        $vehregistration = $_REQUEST['vehregistration'];
+
+        $regvehquery = "INSERT INTO `vehicles` (CIVID, VehicleMake, VehicleModel, LicensePlate, Color, RegistrationStatus) 
+                        VALUES ('$id', '$vehmake', '$vehmodel', '$vehlicense', '$vehColor', '$vehregistration');";
+        
+        $regvehresult = mysqli_query($con, $regvehquery);
+        if($regvehresult){
+            header("Location: mdt.php?civid=$id");
+        }else{
+            header("Location: Pages/logregSystem/IncorrectPassword.html");
+
+        }
+    }
+
     if (isset($_REQUEST['licensetype'])) {
         $licensetype = $_REQUEST['licensetype'];
         
@@ -159,9 +182,47 @@
                 </div>
                 <div class="tab-body tab-body-hidden" id="tab3">
                     <div class="row bg-black">
-                        <input type="submit" value="Register a new vehicle" name="licensesubmit" class="btn btn-primary down-10"/>
+                        <input onclick="openForm()" type="submit" value="Register a new vehicle" name="licensesubmit" class="btn btn-primary down-10"/>
+                            <div class="form-popup" id="myForm">
+                                <form action="" class="form-container" method="post">
+                                    <h1>Register a vehicle</h1>
 
+                                    <label for="vehmake"><b>Make</b></label>
+                                    <input type="text" placeholder="Enter Vehicle make" name="vehmake" required>
+
+                                    <label for="vehmodel"><b>Model</b></label>
+                                    <input type="text" placeholder="Enter Vehicle model" name="vehmodel" required>
+
+                                    <label for="vehplate"><b>License Plate</b></label>
+                                    <input type="text" placeholder="Enter Vehicle License plate" name="vehplate" required>
+
+                                    <label for="vehcolor"><b>Vehicle Color</b></label>
+                                    <input type="text" placeholder="Enter Vehicle Color" name="vehcolor" required>
+
+                                    <label for="vehregistration"><b>Vehicle registration status</b></label>
+                                    <input type="text" placeholder="Enter vehicle registration status" name="vehregistration" required>
+
+                                    <button type="submit" class="btn">Register Vehicle</button>
+                                    <button  class="btn cancel" onclick="closeForm()">Close</button>
+                                </form>
+                            </div>
                     </div>
+                    <div class="row">
+                            <h2>vehicles:</h2>
+                            <table class="tablebg">
+                                <tr class="tablebg">
+                                <th class="tablebg">Vehicle Make</th>
+                                <th>Vehicle Model</th>
+                                <th>Vehicle License Plate</th>
+                                <th>Vehicle Color</th>
+                                <th>Vehicle registration status</th>
+                                </tr>
+                                <tr>
+                                <td>value</td>
+                                <td>value2</td>
+                                </tr>
+                            </table>
+                        </div>
                 </div>
                 <div class="tab-body tab-body-hidden" id="tab4"><p>Body 4</p></div>
             </div>
@@ -182,5 +243,12 @@ function loadTab(tab_number)
 
 	last_tab = tab_number;
 }
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+} 
 </script>
 <?php }?>
