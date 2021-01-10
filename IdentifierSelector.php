@@ -22,6 +22,9 @@
                 $depuserquery    = "INSERT into `identifiers` (UUID, UID, Identifier, Department, Rank, approved)
                 VALUES ('$randid1', '$uid', '$createdIdentifier', '$createdidentifierforDep', '0', '1')";
                 $depuserresult   = mysqli_query($con, $depuserquery);
+                
+                $setstatusquery = "INSERT INTO `caduserstatuses` (uid, uuid, identifier, status) VALUES ('$randid1', '$uid', '$createdIdentifier', '10-42')";
+                $setstatusresult = mysqli_query($con, $setstatusquery);
             }else{
                 echo '<script language="javascript">';
                 echo 'alert("The department is whitelisted")';
@@ -30,13 +33,16 @@
             }
         }
 
-        $depuserquery    = "INSERT into `departmentusers` (id, uid, Department, approved)
-        VALUES ('$createdIdentifier', '$uid', '$createdidentifierforDep', 1)";
+        $depuserquery    = "INSERT into `identifiers` (UUID, UID, Identifier, Department, Rank, approved)
+        VALUES ('$randid1', '$uid', '$createdIdentifier', '$createdidentifierforDep', '0', '0')";
         $depuserresult   = mysqli_query($con, $depuserquery);
+
+        $setstatusquery = "INSERT INTO `caduserstatuses` (uid, uuid, identifier, status) VALUES ('$randid1', '$uid', '$createdIdentifier', '10-42')";
+        $setstatusresult = mysqli_query($con, $setstatusquery);
 
                 
         if ($depuserresult) {
-        header("Location: civ.php");
+        header("Location: IdentifierSelector.php");
         } else {
         }
 
@@ -67,7 +73,7 @@
                                     $Identifier_result = mysqli_query($con, $Identifier_sql) or die(mysql_error());
                                     while($Identifier_rows = mysqli_fetch_array($Identifier_result)){
                                         echo"
-                                            <option id='identifierselection' name='identifierselection'>" . $Identifier_rows['Identifier'] . " (" . $Identifier_rows['Department'] . ") </option>
+                                            <option id='identifierselection' name='identifierselection' value=" . $Identifier_rows['UUID'] ." >" . $Identifier_rows['Identifier'] . " (" . $Identifier_rows['Department'] . ") </option>
                                             <br>
                                             ";
                                         }
@@ -89,6 +95,7 @@
     <div class="register-identifier">
         <div class="register-civ-header">    
         <h1>Create an Identifier</h1>
+        <h4>note: some departments are whitelisted, use the Community Officer department if you want to be a CO</h4>
         </div>
         <form method="post">
             <div class="row">
@@ -106,7 +113,7 @@
                                     $departments_result = mysqli_query($con, $departments_sql) or die(mysql_error());
                                     while($departments_rows = mysqli_fetch_array($departments_result)){
                                         echo"
-                                        <option id='depid' name='selecteddep' value=" .$departments_rows['depname'] . ">" . $departments_rows['depname'] . "</option>
+                                        <option id='depid' name='department' value=" .$departments_rows['depname'] . ">" . $departments_rows['depname'] . "</option>
                                         <br>
 
                                         ";
