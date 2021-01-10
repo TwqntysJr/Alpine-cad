@@ -12,7 +12,7 @@
   
     <nav class="nav">
       <ul>
-        <li><a href="#">Discord</a></li>
+        <li><a href="https://discord.alpinerp.cc">Discord</a></li>
         <li><a href="IdentifierSelector.php">Civilian Officer</a></li>
         <li><a href="civ.php">Civilian</a></li>
         <?php 
