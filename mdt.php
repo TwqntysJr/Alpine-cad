@@ -27,6 +27,17 @@
         $civOrigen = $civrows['Origen'];
     }
 
+    $civVehiclessql = "SELECT * FROM vehicles WHERE CIVID='$id'";
+    $civVehicleresult = mysqli_query($con, $civVehiclessql) or die(mysql_error());
+
+    while($civVehiclerows = mysqli_fetch_array($civVehicleresult)){
+        $CivVehicleMake = $civVehiclerows['VehicleMake'];
+        $CivVehicleModel = $civVehiclerows['VehicleModel'];
+        $CivVehicleLicensePlate =  $civVehiclerows['LicensePlate'];
+        $civVehicleColor = $civVehiclerows['Color'];
+        $civVehicleRegistration = $civVehiclerows['RegistrationStatus'];
+    }
+    
     if (isset($_REQUEST['vehmake'])){
         $vehmake = $_REQUEST['vehmake'];
 
@@ -181,7 +192,7 @@
                     </form>
                 </div>
                 <div class="tab-body tab-body-hidden" id="tab3">
-                    <div class="row bg-black">
+                    <div class="row">
                         <input onclick="openForm()" type="submit" value="Register a new vehicle" name="licensesubmit" class="btn btn-primary down-10"/>
                             <div class="form-popup" id="myForm">
                                 <form action="" class="form-container" method="post">
@@ -208,21 +219,42 @@
                             </div>
                     </div>
                     <div class="row">
-                            <h2>vehicles:</h2>
-                            <table class="tablebg">
-                                <tr class="tablebg">
-                                <th class="tablebg">Vehicle Make</th>
-                                <th>Vehicle Model</th>
-                                <th>Vehicle License Plate</th>
-                                <th>Vehicle Color</th>
-                                <th>Vehicle registration status</th>
-                                </tr>
-                                <tr>
-                                <td>value</td>
-                                <td>value2</td>
-                                </tr>
+                        <h2>vehicles:</h2>
+                        <br>
+                        <div class="col"></div>
+                        <div class="row">
+                            <table class="styled-table">
+                                <thead>
+                                    <tr>
+                                        <th>Vehicle Make</th>
+                                        <th>Vehicle Model</th>
+                                        <th>License Plate</th>
+                                        <th>Color</th>
+                                        <th>Registration status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                
+                                <?php 
+                                        $civvehiclelist_sql = "SELECT * FROM vehicles WHERE civid='$id'";
+                                        $civvehiclelist_result = mysqli_query($con, $civvehiclelist_sql) or die(mysql_error());
+                                        while($civvehiclelist_rows = mysqli_fetch_array($civvehiclelist_result)){
+                                            echo"
+                                                <tr>
+                                                    <td class='gray'> " . $civvehiclelist_rows['VehicleMake'] . "</td>
+                                                    <td class='gray'> " . $civvehiclelist_rows['VehicleModel'] . "</td>
+                                                    <td class='gray'> " . $civvehiclelist_rows['LicensePlate'] . "</td>
+                                                    <td class='gray'> " . $civvehiclelist_rows['Color'] . "</td>
+                                                    <td class='gray'> " . $civvehiclelist_rows['RegistrationStatus'] . "</td>
+                                                </tr>
+                                            ";
+                                        }
+                                    ?>
+                                    
+                                </tbody>
                             </table>
                         </div>
+                    </div>
                 </div>
                 <div class="tab-body tab-body-hidden" id="tab4"><p>Body 4</p></div>
             </div>

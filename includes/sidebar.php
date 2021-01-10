@@ -23,7 +23,7 @@
     <nav class="nav">
       <ul>
         <li><a href="#">Discord</a></li>
-        <li><a href="#">Civilian Officer</a></li>
+        <li><a href="pubcad.php">Civilian Officer</a></li>
         <li><a href="civ.php">Civilian</a></li>
         <?php 
             
